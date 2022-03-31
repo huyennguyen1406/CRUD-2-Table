@@ -1,0 +1,38 @@
+<form [formGroup]="formCity" (ngSubmit)="createCity()">
+  <h1 mat-dialog-title>Add City Form</h1>
+  <div mat-dialog-content>
+    <div *ngIf="!formCity.get('name')?.value
+          && formCity.get('name')?.touched">Not blank
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Thành phố:</mat-label>
+      <input matInput placeholder="Thành phố" formControlName="name" name="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quốc gia:</mat-label>
+      <mat-select placeholder="Quốc gia" formControlName="nation" name="nation">
+        <mat-option *ngFor="let national of nationals" value="{{national.id}}">{{national.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Diện tích:</mat-label>
+      <input matInput type="number" placeholder="Diện tích" formControlName="area" name="area">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Dân số:</mat-label>
+      <input matInput type="number" placeholder="Dân số" formControlName="population" name="population">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>GDP:</mat-label>
+      <input matInput type="number" placeholder="GDP" formControlName="gdp" name="gdp">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Giới thiệu:</mat-label>
+      <textarea matInput formControlName="description" name="description"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Thoát</button>
+    <button type="submit" mat-raised-button color="primary">{{actionBtn}}</button>
+  </div>
+</form>
